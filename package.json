@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
+    "antd": "^4.10.3",
     "axios": "^0.21.0",
     "dotenv": "^8.2.0",
     "jwt-decode": "^3.1.2",

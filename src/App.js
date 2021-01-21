@@ -3,7 +3,10 @@
 // IMPORT INTERNAL UTILITIES
 
 // IMPORT INTERNAL COMPONENTS
-import Artwork from './components/elements/Artwork'
+import Header from './components/elements/Header'
+import Footer from './components/elements/Footer'
+// import Artwork from './components/elements/Artwork'
+import ImageContainer from './components/elements/ImageContainer'
 // IMPORT SCSS
 import './App.scss'
 
@@ -14,11 +17,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Artwork />
+
+        <Header />
+        {/* <Artwork /> */}
+        <ImageContainer />
         <p>
-          Hello, this is the frontend of the project.
+          Hello, this is the frontend of the project and is coming from App.js
         </p>
       </header>
+    <Footer />
     </div>
   );
 }

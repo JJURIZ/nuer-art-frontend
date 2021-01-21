@@ -1,0 +1,23 @@
+.ImageContainer {
+    position: relative;
+    display: inline-block;
+    
+    &-img {
+        border: 1px solid red;
+        width: 402px;
+        // margin-left: 10px;
+        &-info {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+}
+
+.ArtImage {
+    border: 10px solid black;
+}
+
+.ant-image {
+    // margin-left: 10px;
+    margin-bottom: 5px;
+}
