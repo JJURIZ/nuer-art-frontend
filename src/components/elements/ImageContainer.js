@@ -3,19 +3,20 @@ import { Image } from 'antd';
 import './Header.scss'
 import './ImageContainer.scss'
 import Prints from '../data/Prints'
+import Header from './Header'
 
 
 class ImageContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      itemsInCart: 0
+      inCart: 0
     }
     this.handleClick = this.handleClick.bind(this)
   }
     handleClick(prevState) {
       this.setState(prevState => {
-        return {itemsInCart: prevState.itemsInCart + 1}
+        return {inCart: prevState.inCart + 1}
       })
     }
     
@@ -33,15 +34,18 @@ class ImageContainer extends Component {
             <p>{print.title}</p>
             <p>{print.price}</p>
             <p>Qty: {print.qty}</p>
-            <p onClick={this.handleClick}>Add to Cart</p>
+            <p onClick={this.handleClick} id="add-to-cart">Add to Cart</p>
           </div>
           </div>
         )
       })
         return(
+          <div>
+            <Header inCart={this.state.inCart}/>
             <div className="ImageContainer">
               {Artwork}          
             </div>
+          </div>
         )
     }
 }

@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <Header />
+        {/* <Header /> */}
         {/* <Artwork /> */}
         <ImageContainer />
         <p>
