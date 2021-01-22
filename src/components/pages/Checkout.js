@@ -2,13 +2,12 @@ import React, { Component } from "react"
 import Header from '../elements/Header'
 
 class Checkout extends Component {
-    constructor(props) {
-        super(props);
-    }
+
     render(){
+        console.log(this.props)
+        // console.log(this.props.cart)
         return(
             <div>
-                <Header />
                 <h1>This is the Checkout Screen</h1>
             </div>
         )

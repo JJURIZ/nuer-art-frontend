@@ -1,8 +1,10 @@
 // IMPORT EXTERNAL DEPENDENCIES
 import { Route, Redirect } from "react-router-dom"
+import { useState } from "react"
 // IMPORT INTERNAL UTILITIES
 
 // IMPORT INTERNAL COMPONENTS
+import Header from './components/elements/Header'
 import Footer from './components/elements/Footer'
 import Checkout from './components/pages/Checkout'
 import ImageContainer from './components/elements/ImageContainer'
@@ -13,14 +15,18 @@ import './App.scss'
 // const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
+  const [cart, setCart] = useState({items: []})
+
   return (
     <div className="App">
+
+      <Header cart={cart}/>
 
       <Route 
       exact
       path="/checkout"
       render={() => {
-        return <Checkout /> 
+        return <Checkout cart={cart}/> 
       }}
 
       />
@@ -28,7 +34,7 @@ function App() {
       exact
       path="/"
       render={() => {
-        return <ImageContainer />
+        return <ImageContainer setCart={setCart} cart={cart}/>
       }}
       />
 
