@@ -6,21 +6,13 @@ import './Header.scss'
 class Header extends Component { 
 
     render(props) {
-        const cartFunc = () => {
-            if(this.props.cart.items.length > 0){
-                return <Link to="/checkout"><ShoppingFilled className="ShoppingFilled"/></Link>
-            } else {
-                return <ShoppingOutlined />
-            }
-        }
-        console.log(this.props.cart.items)
         return (
         <div className="Header">
             <div className="Header-Header-text">
                 <span>Nuer Art</span>
             </div>
             <div className="Header-Shopping-Cart">
-                {cartFunc()}
+                {this.props.cart.items.length > 0 ? <Link to="/checkout"><ShoppingFilled className="ShoppingFilled"/></Link> : <ShoppingOutlined /> }
             </div> 
 
         </div>

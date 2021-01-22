@@ -1,27 +1,21 @@
 // EXTERNAL IMORTS
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { Image } from 'antd'
-import {v4 as uuidv4} from 'uuidv4'
+// import {v4 as uuidv4} from 'uuidv4'
 
 //INTERNAL IMPORTS
-import './Header.scss'
 import './ImageContainer.scss'
 import Prints from '../data/Prints'
-// import Header from './Header'
-// import Checkout from '../pages/Checkout'
-
-
 
 class ImageContainer extends Component {
 
-    handleClick(price, title, qty) {
+    handleClick(price, title, qty, url) {
       const updatedItems = [...this.props.cart.items]
       if(this.props.cart.items.some(item => item.title === title)){
         const idx = updatedItems.findIndex(item => item.title === title)
         updatedItems[idx].qty += 1
       } else {
-        updatedItems.push({price, title, qty})
+        updatedItems.push({price, title, qty, url})
       }
       this.props.setCart({items: updatedItems})
     }
@@ -38,8 +32,8 @@ class ImageContainer extends Component {
           />
           <div className="ImageContainer-img-info">
             <p>{print.title}</p>
-            <p>{print.price}</p>
-            <p onClick={() => this.handleClick(print.price, print.title, print.qty)} className="add-to-cart">Add to Cart</p>
+            <p>${print.price}</p>
+            <p onClick={() => this.handleClick(print.price, print.title, print.qty, print.url)} className="add-to-cart">Add to Cart</p>
           </div>
           </div>
         )

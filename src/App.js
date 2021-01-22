@@ -26,7 +26,7 @@ function App() {
       exact
       path="/checkout"
       render={() => {
-        return <Checkout cart={cart}/> 
+        return <Checkout setCart={setCart} cart={cart}/> 
       }}
 
       />
