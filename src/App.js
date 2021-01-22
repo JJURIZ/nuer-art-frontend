@@ -1,11 +1,10 @@
 // IMPORT EXTERNAL DEPENDENCIES
-
+import { Route, Redirect } from "react-router-dom"
 // IMPORT INTERNAL UTILITIES
 
 // IMPORT INTERNAL COMPONENTS
-import Header from './components/elements/Header'
 import Footer from './components/elements/Footer'
-// import Artwork from './components/elements/Artwork'
+import Checkout from './components/pages/Checkout'
 import ImageContainer from './components/elements/ImageContainer'
 // IMPORT SCSS
 import './App.scss'
@@ -16,15 +15,23 @@ import './App.scss'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
 
-        {/* <Header /> */}
-        {/* <Artwork /> */}
-        <ImageContainer />
-        <p>
-          Hello, this is the frontend of the project and is coming from App.js
-        </p>
-      </header>
+      <Route 
+      exact
+      path="/checkout"
+      render={() => {
+        return <Checkout /> 
+      }}
+
+      />
+      <Route 
+      exact
+      path="/"
+      render={() => {
+        return <ImageContainer />
+      }}
+      />
+
     <Footer />
     </div>
   );

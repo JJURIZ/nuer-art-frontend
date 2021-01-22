@@ -1,19 +1,18 @@
 import React, { Component } from "react"
 import { ShoppingOutlined, ShoppingFilled } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
 import './Header.scss'
 
 class Header extends Component { 
     render(props) {
-        console.log(this.props.inCart)
-        let cartStatus = this.props.inCart
-        
+        const currentItems = this.props.items
         return(
         <div className="Header">
             <div className="Header-Header-text">
-                Nuer Art
+                <span>Nuer Art</span>
             </div>
             <div className="Header-Shopping-Cart">
-            {cartStatus ? <ShoppingFilled /> : <ShoppingOutlined />}
+            {currentItems.length > 0 ? <Link to="/checkout"><ShoppingFilled className="ShoppingFilled"/></Link> : <ShoppingOutlined />}
             </div> 
         </div>
         )

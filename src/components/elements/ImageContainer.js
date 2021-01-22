@@ -1,5 +1,9 @@
+// EXTERNAL IMORTS
 import React, { Component } from 'react'
-import { Image } from 'antd';
+import { Image } from 'antd'
+import {v4 as uuidv4} from 'uuidv4'
+
+//INTERNAL IMPORTS
 import './Header.scss'
 import './ImageContainer.scss'
 import Prints from '../data/Prints'
@@ -10,14 +14,18 @@ class ImageContainer extends Component {
   constructor(props){
     super(props);
     this.state = {
-      inCart: 0
+      items: []
     }
-    this.handleClick = this.handleClick.bind(this)
   }
-    handleClick(prevState) {
-      this.setState(prevState => {
-        return {inCart: prevState.inCart + 1}
-      })
+    handleClick(price, title, qty) {
+      const updatedItems = [...this.state.items]
+      if(this.state.items.some(item => item.title === title)){
+        const idx = updatedItems.findIndex(item => item.title === title)
+        updatedItems[idx].qty += 1
+      } else {
+        updatedItems.push({price, title, qty})
+      }
+      this.setState({items: updatedItems})
     }
     
     render(){
@@ -34,14 +42,16 @@ class ImageContainer extends Component {
             <p>{print.title}</p>
             <p>{print.price}</p>
             <p>Qty: {print.qty}</p>
-            <p onClick={this.handleClick} id="add-to-cart">Add to Cart</p>
+            <p onClick={() => this.handleClick(print.price, print.title, print.qty)} className="add-to-cart">Add to Cart</p>
           </div>
           </div>
         )
       })
         return(
           <div>
-            <Header inCart={this.state.inCart}/>
+            <Header 
+            items={this.state.items}
+            />
             <div className="ImageContainer">
               {Artwork}          
             </div>
