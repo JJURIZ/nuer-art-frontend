@@ -8,6 +8,8 @@ import Header from './components/elements/Header'
 import Footer from './components/elements/Footer'
 import Checkout from './components/pages/Checkout'
 import ImageContainer from './components/elements/ImageContainer'
+import Signup from './components/pages/Signup'
+import Login from './components/pages/Login'
 // IMPORT SCSS
 import './App.scss'
 
@@ -16,7 +18,14 @@ import './App.scss'
 
 function App() {
   const [cart, setCart] = useState({items: []})
+  const [currentUser, setCurrentUser] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const nowCurrentUser = (userData) => {
+    console.log('Now Current user...')
+    setCurrentUser(userData);
+    setIsAuthenticated(true);
+  }
   return (
     <div className="App">
 
@@ -37,6 +46,23 @@ function App() {
         return <ImageContainer setCart={setCart} cart={cart}/>
       }}
       />
+
+      <Route 
+      exact
+      path="/signup"
+      render={() => {
+        return <Signup />
+      }}
+      />
+
+      <Route 
+      exact
+      path="/login"
+      render={(props) => 
+      <Login nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>}
+  
+      />
+      
 
     <Footer />
     </div>

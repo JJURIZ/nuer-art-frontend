@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useAlert } from 'react-alert'
 import { Redirect } from 'react-router-dom'
 const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
 
@@ -15,6 +16,7 @@ const Signup = () => {
     const [zip, setZip] = useState('');
     const [redirect, setRedirect] = useState(false)
 
+    const alert = useAlert()
 
     const handleName = (e) => {
         setName(e.target.value);
@@ -54,6 +56,12 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (password !== confirmPassword) {
+            alert.show("Password and Confirm Password must match")
+        }
+        if (name.length < 1 || email.length < 1){
+            alert.show("Name and Email are required")
+        }
 
         if (password === confirmPassword) {
             const newUser = { 
@@ -67,7 +75,8 @@ const Signup = () => {
                 zip
             }
 
-            axios.post(`${REACT_APP_SERVER_URL}/controllers/users/signup`, newUser)
+
+            axios.post(`${REACT_APP_SERVER_URL}/users/signup`, newUser)
             .then(response => {
                 setRedirect(true)
             })
@@ -77,7 +86,8 @@ const Signup = () => {
         }
     }
 
-    if (redirect) return <Redirect to='/login' />
+    if (redirect) return <Redirect to='/' />
+   
 
     return (
                 <div className="Signup">

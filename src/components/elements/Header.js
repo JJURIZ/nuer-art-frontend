@@ -11,6 +11,7 @@ class Header extends Component {
             <div className="Header-Header-text">
                 <span>Nuer Art</span>
             </div>
+            <Link to="/signup">Signup</Link>
             <div className="Header-Shopping-Cart">
                 {this.props.cart.items.length > 0 ? <Link to="/checkout"><ShoppingFilled className="ShoppingFilled"/></Link> : <ShoppingOutlined /> }
             </div> 
