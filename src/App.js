@@ -26,10 +26,18 @@ function App() {
     setCurrentUser(userData);
     setIsAuthenticated(true);
   }
+
+  const handleLogout = () => {
+    if (localStorage.getItem('jwtToken')){
+      localStorage.removeItem('jwtToken');
+      setCurrentUser(null);
+      setIsAuthenticated(false)
+    }
+  }
   return (
     <div className="App">
 
-      <Header cart={cart}/>
+      <Header cart={cart} isAuthenticated={isAuthenticated} handleLogout={handleLogout}/>
 
       <Route 
       exact

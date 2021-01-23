@@ -19,12 +19,6 @@ class Profile extends Component {
                 <p>City: {this.props.city}</p>
                 <p>State: {this.props.state}</p>
                 <p>Zip: {this.props.zip}</p>
-                <button 
-                    className="button-small" 
-                    onClick={// update State}
-                >
-                    Edit Name
-                </button>
             </div>
         )
     }
