@@ -43,8 +43,7 @@ const EditProfile = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(props.user)
-            axios.put(`${backendUrl}/users/id`)
+            axios.put(`${backendUrl}/users/id`, )
             .then(response => {
                 setRedirect(true)
             })

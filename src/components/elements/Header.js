@@ -9,26 +9,10 @@ class Header extends Component {
     render(props) {
         return (
         <div className="Header">
-            <div className="Header-Header-text">
-                <Link to="/"><span>Nuer Art</span></Link>
-            </div>
-            {
-                this.props.isAuthenticated 
-                ? 
-                <div>
-                    <Link to="/profile">Profile</Link> 
-                    <Link to="/"><span onClick={this.props.handleLogout}>Logout</span></Link> 
-                </div> 
-                : 
-                <div>
-                    <Link to="/signup">Signup</Link> 
-                    <Link to="/login">Login</Link>
-                </div>
-            }
-            <div className="Header-Shopping-Cart">
-                {this.props.cart.items.length > 0 ? <Link to="/checkout"><ShoppingFilled className="ShoppingFilled"/></Link> : <ShoppingOutlined className="ShoppingEmpty"/> }
-            </div> 
-
+                <Link to="/" className="Header-title"><p>Nuer Art</p></Link>
+            {this.props.isAuthenticated ? <Link to="/profile"><p>Profile</p></Link> : <Link to="/signup" ><p>Signup</p></Link>}
+            {this.props.isAuthenticated ? <Link to="/"><p onClick={this.props.handleLogout}>Logout</p></Link> : <Link to="/login" ><p>Login</p></Link>}
+            {this.props.cart.items.length > 0 ? <Link to="/checkout"><ShoppingFilled className="ShoppingFilled"/></Link> : <span><ShoppingOutlined className="ShoppingEmpty"/></span> }
         </div>
         )
     }
