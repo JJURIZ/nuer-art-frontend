@@ -16,7 +16,6 @@ import EditProfile from './components/pages/EditProfile'
 import './App.scss'
 
 // ENVIRONMENT VARIABLES
-// const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 function App() {
   const [cart, setCart] = useState({items: []})
@@ -28,20 +27,21 @@ function App() {
     setIsAuthenticated(true);
   }
 
-  // const handleLogout = () => {
-  //   if (localStorage.getItem('jwtToken')){
-  //     localStorage.removeItem('jwtToken');
-  //     setCurrentUser(null);
-  //     setIsAuthenticated(false)
-  //   }
-  // }
+  const handleLogout = () => {
+    if (localStorage.getItem('jwtToken')){
+      localStorage.removeItem('jwtToken');
+      setCurrentUser(null);
+      setIsAuthenticated(false)
+    }
+  }
+
   return (
     <div className="App">
 
       <Header 
       cart={cart} 
       isAuthenticated={isAuthenticated} 
-      // handleLogout={handleLogout}
+      handleLogout={handleLogout}
       />
 
       <Route 
@@ -85,7 +85,10 @@ function App() {
       <Profile
       nowCurrentUser={nowCurrentUser} 
       setIsAuthenticated={setIsAuthenticated} 
-      user={currentUser}/>}
+      user={currentUser}
+      handleLogout={handleLogout}
+      />}
+
       />
 
 

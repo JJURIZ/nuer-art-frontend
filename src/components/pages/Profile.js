@@ -31,9 +31,10 @@ function Profile(props) {
         })
         }
 
-    const deleteUser = () => {
+    const deleteUser = async () => {
         try {
-        axios.delete(`${backendUrl}/users/${props.user.id}`)
+        props.handleLogout()
+        await axios.delete(`${backendUrl}/users/${props.user.id}`)
         } 
         catch(error) {
             console.log(error)
@@ -70,12 +71,14 @@ function Profile(props) {
                 Edit Profile
                 </button>
                 </Link>
+                <Link to="/">
                 <button 
                 className="Delete-user"
                 onClick={deleteUser}
                 >
                 Delete Account
                 </button>
+                </Link>
            
             </div>
         )
