@@ -1,27 +1,68 @@
-import React, { Component } from 'react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+const backendUrl = process.env.REACT_APP_SERVER_URL
 
-class Profile extends Component {
-    constructor() {
-        super();
-        this.state = {
-            editUser: false
+function Profile(props) {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [addressLine1, setAddressLine1] = useState('')
+    const [addressLine2, setAddressLine2] = useState('')
+    const [city, setCity] = useState('')
+    const [state, setState] = useState('')
+    const [zip, setZip] = useState('')
+
+    const getUser = () => {
+        let userData
+
+        axios.get(`${backendUrl}/users/${props.user.id}`)
+        .then(response => {
+            userData = response.data.user
+            setName(userData.name)
+            setEmail(userData.email)
+            setAddressLine1(userData.addressLine1)
+            setAddressLine2(userData.addressLine2)
+            setCity(userData.city)
+            setState(userData.state)
+            setZip(userData.zip)
+        })
+        .catch(error => {
+            console.log(error)
+        })
         }
-        this.editUser = this.editUser.bind(this)
-    }
-    render() {
+        useEffect(() => {
+            getUser()
+          }, []);
+
+    
         return(
             <div>
                 <h1>Profile</h1>
-                <p>Name: {this.props.name}</p>
-                <p>Email: {this.props.email}</p>
-                <p>Address Line 1: {this.props.addressLine1}</p>
-                <p>Address Line 2: {this.props.addressLine2}</p>
-                <p>City: {this.props.city}</p>
-                <p>State: {this.props.state}</p>
-                <p>Zip: {this.props.zip}</p>
+                <p>{name}</p>
+                <p>{email}</p>
+                <p>{addressLine1}</p>
+                <p>{addressLine2}</p>
+                <p>{city}</p>
+                <p>{state}</p>
+                <p>{zip}</p>
+                <Link to={{pathname: "/profile/edit", state: {user: {
+                    name,
+                    email,
+                    addressLine1,
+                    addressLine2,
+                    city,
+                    state,
+                    zip,
+                    id: props.user.id
+                }}}}>
+                <button 
+                className=""
+                >
+                Edit Profile
+                </button>
+                </Link>
             </div>
         )
     }
-}
 
 export default Profile

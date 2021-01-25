@@ -3,7 +3,7 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utilities/setAuthToken'
 import { Redirect } from 'react-router-dom'
-const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL
+const backendUrl = process.env.REACT_APP_SERVER_URL
 
 class Login extends Component {
     constructor(props){
@@ -29,16 +29,14 @@ class Login extends Component {
         const userData = {
             email: this.state.email,
             password: this.state.password
-        }
-    
-        axios.post(`${REACT_APP_SERVER_URL}/users/login`, userData)
+        }    
+        axios.post(`${backendUrl}/users/login`, userData)
         .then(response => {
             const { token } = response.data;
             localStorage.setItem('jwtToken', token);
             setAuthToken(token)
             const decoded = jwt_decode(token);
             this.props.nowCurrentUser(decoded)
-            // console.log(this.props.user.name)
         })
         .catch(error => {
             console.log(error)

@@ -1,5 +1,5 @@
 // IMPORT EXTERNAL DEPENDENCIES
-import { Route, Redirect } from "react-router-dom"
+import { Route } from "react-router-dom"
 import { useState } from "react"
 // IMPORT INTERNAL UTILITIES
 
@@ -10,6 +10,8 @@ import Checkout from './components/pages/Checkout'
 import ImageContainer from './components/elements/ImageContainer'
 import Signup from './components/pages/Signup'
 import Login from './components/pages/Login'
+import Profile from './components/pages/Profile'
+import EditProfile from './components/pages/EditProfile'
 // IMPORT SCSS
 import './App.scss'
 
@@ -22,22 +24,25 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const nowCurrentUser = (userData) => {
-    console.log('Now Current user...')
-    setCurrentUser(userData);
+    setCurrentUser(userData)
     setIsAuthenticated(true);
   }
 
-  const handleLogout = () => {
-    if (localStorage.getItem('jwtToken')){
-      localStorage.removeItem('jwtToken');
-      setCurrentUser(null);
-      setIsAuthenticated(false)
-    }
-  }
+  // const handleLogout = () => {
+  //   if (localStorage.getItem('jwtToken')){
+  //     localStorage.removeItem('jwtToken');
+  //     setCurrentUser(null);
+  //     setIsAuthenticated(false)
+  //   }
+  // }
   return (
     <div className="App">
 
-      <Header cart={cart} isAuthenticated={isAuthenticated} handleLogout={handleLogout}/>
+      <Header 
+      cart={cart} 
+      isAuthenticated={isAuthenticated} 
+      // handleLogout={handleLogout}
+      />
 
       <Route 
       exact
@@ -59,7 +64,7 @@ function App() {
       exact
       path="/signup"
       render={() => {
-        return <Signup />
+        return <Signup /> 
       }}
       />
 
@@ -67,8 +72,33 @@ function App() {
       exact
       path="/login"
       render={(props) => 
-      <Login nowCurrentUser={nowCurrentUser} setIsAuthenticated={setIsAuthenticated} user={currentUser}/>}
-  
+      <Login 
+      nowCurrentUser={nowCurrentUser} 
+      setIsAuthenticated={setIsAuthenticated} 
+      user={currentUser}/>}
+      />
+
+      <Route 
+      exact
+      path="/profile"
+      render={(props) => 
+      <Profile
+      nowCurrentUser={nowCurrentUser} 
+      setIsAuthenticated={setIsAuthenticated} 
+      user={currentUser}/>}
+      />
+
+
+      <Route 
+      exact
+      path="/profile/edit"
+      render={() => {
+        return <EditProfile
+        nowCurrentUser={nowCurrentUser} 
+        setIsAuthenticated={setIsAuthenticated} 
+        user={currentUser}
+        />
+      }}
       />
       
 

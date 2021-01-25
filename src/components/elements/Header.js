@@ -7,7 +7,6 @@ import { Tooltip } from 'antd'
 class Header extends Component { 
     
     render(props) {
-        console.log(this.props.isAuthenticated)
         return (
         <div className="Header">
             <div className="Header-Header-text">

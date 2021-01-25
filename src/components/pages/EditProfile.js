@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useAlert } from 'react-alert'
 import { Redirect } from 'react-router-dom'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
-const Signup = () => {
+const EditProfile = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [addressLine1, setAddressLine1] = useState('');
     const [addressLine2, setAddressLine2] = useState('');
     const [city, setCity] = useState('');
@@ -16,22 +13,12 @@ const Signup = () => {
     const [zip, setZip] = useState('');
     const [redirect, setRedirect] = useState(false)
 
-    const alert = useAlert()
-
     const handleName = (e) => {
         setName(e.target.value);
     }
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
-    }
-
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-    }
-
-    const handleConfirmPassword = (e) => {
-        setConfirmPassword(e.target.value);
     }
 
     const handleAddressLine1 = (e) => {
@@ -56,25 +43,8 @@ const Signup = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            alert.show("Password and Confirm Password must match")
-        }
-        if (name.length < 1 || email.length < 1){
-            alert.show("Name and Email are required")
-        }
-
-        if (password === confirmPassword) {
-            const newUser = { 
-                name, 
-                email, 
-                password, 
-                addressLine1, 
-                addressLine2, 
-                city, 
-                state, 
-                zip
-            }
-            axios.post(`${backendUrl}/users/signup`, newUser)
+        // console.log(props.user)
+            axios.put(`${backendUrl}/users/id`)
             .then(response => {
                 setRedirect(true)
             })
@@ -82,15 +52,28 @@ const Signup = () => {
                 console.log(error)
             })
         }
-    }
+    
+
+    useEffect(() =>{
+        axios.get(`${backendUrl}/users/${props.user.id}`)
+        .then((response) => {
+            let user = response.data.user
+            setName(user.name)
+            setEmail(user.email)
+            setAddressLine1(user.addressLine1)
+            setAddressLine2(user.addressLine2)
+            setCity(user.city)
+            setState(user.state)
+            setZip(user.zip)
+        })
+    },[])
 
     if (redirect) return <Redirect to='/' />
    
-
     return (
-         
+
                 <div className="Signup">
-                    <h2 className="Signup-header">Signup</h2>
+                    <h2 className="Signup-header">Edit Profile</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
@@ -99,14 +82,6 @@ const Signup = () => {
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <input type="email" name="email" value={email} onChange={handleEmail} className="form-control" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input type="password" name="password" value={password} onChange={handlePassword} className="form-control" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="confirmPassword">Confirm Password</label>
-                            <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="addressLine1">Address Line 1</label>
@@ -134,4 +109,4 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+export default EditProfile;
