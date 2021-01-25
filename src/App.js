@@ -1,6 +1,8 @@
 // IMPORT EXTERNAL DEPENDENCIES
-import { Route } from "react-router-dom"
-import { useState } from "react"
+import { Route, Redirect } from "react-router-dom"
+import { useState, useEffect } from "react"
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './components/utilities/setAuthToken';
 // IMPORT INTERNAL UTILITIES
 
 // IMPORT INTERNAL COMPONENTS
@@ -9,13 +11,19 @@ import Footer from './components/elements/Footer'
 import Checkout from './components/pages/Checkout'
 import ImageContainer from './components/elements/ImageContainer'
 import Signup from './components/pages/Signup'
-import Login from './components/pages/Login'
+import Home from './components/pages/Home'
 import Profile from './components/pages/Profile'
 import EditProfile from './components/pages/EditProfile'
 // IMPORT SCSS
 import './App.scss'
 
 // ENVIRONMENT VARIABLES
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const user = localStorage.getItem('jwtToken');
+  return <Route {...rest } render={(props) => {
+    return user ? <Component { ...rest } { ...props }/> : <Redirect to="/login" />
+  }}/>
+}
 
 function App() {
   const [cart, setCart] = useState({items: []})
@@ -35,6 +43,18 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    let token;
+    // if there is no token in localStorage, then the user is in authenticated
+    if (!localStorage.getItem('jwtToken')) {
+      setIsAuthenticated(false);
+    } else {
+      token = jwt_decode(localStorage.getItem('jwtToken'));
+      setAuthToken(localStorage.jwtToken);
+      setCurrentUser(token);
+    }
+  }, []);
+
   return (
     <div className="App">
 
@@ -43,56 +63,62 @@ function App() {
       isAuthenticated={isAuthenticated} 
       handleLogout={handleLogout}
       />
-
-      <Route 
+{/* 
+      <PrivateRoute 
       exact
       path="/checkout"
       render={() => {
         return <Checkout setCart={setCart} cart={cart}/> 
       }}
+      /> */}
 
-      />
-      <Route 
-      exact
-      path="/"
-      render={() => {
-        return <ImageContainer setCart={setCart} cart={cart}/>
-      }}
+      <PrivateRoute 
+      path="/checkout" 
+      setCart={setCart}
+      cart={cart}
       />
 
+      <PrivateRoute 
+      path="/gallery" 
+      component={ ImageContainer } 
+      user={currentUser}
+      />
+
       <Route 
-      exact
-      path="/signup"
+      exact path="/signup"
       render={() => {
         return <Signup /> 
       }}
       />
 
       <Route 
-      exact
-      path="/login"
+      exact path="/"
       render={(props) => 
-      <Login 
+      <Home 
       nowCurrentUser={nowCurrentUser} 
       setIsAuthenticated={setIsAuthenticated} 
       user={currentUser}/>}
       />
 
-      <Route 
-      exact
-      path="/profile"
-      render={(props) => 
-      <Profile
-      nowCurrentUser={nowCurrentUser} 
+      <PrivateRoute 
+      exact path="/profile" 
+      component={ Profile } 
+      user={currentUser} 
+      handleLogout={handleLogout} 
       setIsAuthenticated={setIsAuthenticated} 
-      user={currentUser}
-      handleLogout={handleLogout}
-      />}
-
+      nowCurrentUser={nowCurrentUser} 
       />
 
+      <PrivateRoute 
+      exact path="/profile/edit" 
+      component={ EditProfile } 
+      user={currentUser} 
+      handleLogout={handleLogout} 
+      setIsAuthenticated={setIsAuthenticated} 
+      nowCurrentUser={nowCurrentUser} 
+      />
 
-      <Route 
+      {/* <PrivateRoute 
       exact
       path="/profile/edit"
       render={() => {
@@ -102,7 +128,7 @@ function App() {
         user={currentUser}
         />
       }}
-      />
+      /> */}
       
 
     <Footer />

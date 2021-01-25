@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utilities/setAuthToken'
+import { Link } from 'react-router-dom'
+
 import { withAlert } from 'react-alert'
 
 import { Redirect } from 'react-router-dom'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
-class Login extends Component {
+class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -49,9 +51,10 @@ class Login extends Component {
         }
 
     render(){
-        if (this.props.user) return <Redirect to="/" />
+        if (this.props.user) return <Redirect to="/gallery" />
         return (
             <div className="">
+            
             <h2 className="">Login</h2>
             <form onSubmit={this.handleSubmit}>
                 <div className="">
@@ -65,9 +68,11 @@ class Login extends Component {
                 </div>
                 <button type="submit" className="">Login</button>
             </form>
+            
+            <Link to="/signup"><h2>Sign Up</h2></Link>
         </div>
         )
     }
 }
 
-export default withAlert()(Login)
+export default withAlert()(Home)

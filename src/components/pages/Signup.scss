@@ -1,0 +1,29 @@
+.Signup-form {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 1fr 5fr;
+    justify-items: center;
+    justify-content: center;
+
+    &-header {
+        grid-row: 1;
+        font-size: 3rem;
+        align-self: center;
+        text-shadow: 3px 2px 6px darkgrey;
+    }
+    &-input{
+        grid-row: 2 / 6;
+        font-size: 1.5rem;
+        margin: .5rem 0 .5rem 0;
+        width: 300px;
+        padding: 0 20px 0 20px;
+        border: black;
+    }
+}
+
+input:hover {
+    background: linear-gradient(90deg, rgba(182,182,236,1) 44%, rgba(0,212,255,0.4556197478991597) 90%);
+}
+.form-control {
+    border-radius: 10px;
+}

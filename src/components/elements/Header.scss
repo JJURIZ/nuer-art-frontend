@@ -3,8 +3,9 @@
 .Header {
     height: 10vh;
     border: 1px solid red;
+    justify-items: center;
     background-color: black;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
