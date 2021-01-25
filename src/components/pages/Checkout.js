@@ -48,7 +48,7 @@ class Checkout extends Component {
         })
         return(
             <div>
-                <h1>This is the Checkout Screen</h1>
+                <h1>Checkout</h1>
                 {Artwork}
                 <h1>Your total is ${this.getTotal()}</h1>
                 <h2>Proceed to Checkout</h2>

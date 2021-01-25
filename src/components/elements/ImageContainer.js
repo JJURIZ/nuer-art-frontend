@@ -18,9 +18,8 @@ class ImageContainer extends Component {
       this.getImages = this.getImages.bind(this)
     }
     handleClick(price, title, qty, url) {
-      console.log(this.props)
-      const updatedItems = [...this.props.cart.items]
-      if(this.props.cart.items.some(item => item.title === title)){
+      const updatedItems = [...this.state.paintings]
+      if(this.state.paintings.some(item => item.title === title)){
         const idx = updatedItems.findIndex(item => item.title === title)
         updatedItems[idx].qty += 1
       } else {

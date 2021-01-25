@@ -63,23 +63,18 @@ function App() {
       isAuthenticated={isAuthenticated} 
       handleLogout={handleLogout}
       />
-{/* 
-      <PrivateRoute 
-      exact
-      path="/checkout"
-      render={() => {
-        return <Checkout setCart={setCart} cart={cart}/> 
-      }}
-      /> */}
 
       <PrivateRoute 
       path="/checkout" 
+      component={ Checkout } 
       setCart={setCart}
       cart={cart}
       />
 
       <PrivateRoute 
       path="/gallery" 
+      setCart={setCart}
+      cart={cart}
       component={ ImageContainer } 
       user={currentUser}
       />
@@ -117,19 +112,6 @@ function App() {
       setIsAuthenticated={setIsAuthenticated} 
       nowCurrentUser={nowCurrentUser} 
       />
-
-      {/* <PrivateRoute 
-      exact
-      path="/profile/edit"
-      render={() => {
-        return <EditProfile
-        nowCurrentUser={nowCurrentUser} 
-        setIsAuthenticated={setIsAuthenticated} 
-        user={currentUser}
-        />
-      }}
-      /> */}
-      
 
     <Footer />
     </div>
