@@ -7,7 +7,6 @@ import axios from 'axios'
 
 //INTERNAL IMPORTS
 import './ImageContainer.scss'
-import Prints from '../data/Prints'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
 class ImageContainer extends Component {

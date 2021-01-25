@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utilities/setAuthToken'
+import { withAlert } from 'react-alert'
+
 import { Redirect } from 'react-router-dom'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
@@ -26,6 +28,7 @@ class Login extends Component {
 
     handleSubmit(e){
         e.preventDefault();
+        const { alert } = this.props
         const userData = {
             email: this.state.email,
             password: this.state.password
@@ -39,6 +42,7 @@ class Login extends Component {
             this.props.nowCurrentUser(decoded)
         })
         .catch(error => {
+            alert.show("Wrong email address or password")
             console.log(error)
         })
 
@@ -66,4 +70,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default withAlert()(Login)
