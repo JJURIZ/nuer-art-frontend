@@ -43,7 +43,7 @@ const EditProfile = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-            axios.put(`${backendUrl}/users/id`, )
+            axios.put(`${backendUrl}/users/${props.user.id}`, {name, email, addressLine1, addressLine2, city, state, zip} )
             .then(response => {
                 setRedirect(true)
             })
@@ -57,6 +57,7 @@ const EditProfile = (props) => {
         axios.get(`${backendUrl}/users/${props.user.id}`)
         .then((response) => {
             let user = response.data.user
+            console.log(user)
             setName(user.name)
             setEmail(user.email)
             setAddressLine1(user.addressLine1)
@@ -67,11 +68,11 @@ const EditProfile = (props) => {
         })
     },[])
 
-    if (redirect) return <Redirect to='/' />
+    if (redirect) return <Redirect to='/profile' />
    
     return (
 
-                <div className="Signup">
+                <div className="Signup-form">
                     <h2 className="Signup-header">Edit Profile</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">

@@ -34,7 +34,7 @@ function Profile(props) {
             getUser()
           }, []);
 
-    
+    console.log(props.user)
         return(
             <div>
                 <h1>Profile</h1>
@@ -61,6 +61,13 @@ function Profile(props) {
                 Edit Profile
                 </button>
                 </Link>
+                <button 
+                className="Delete-user"
+                onClick=""
+                >
+                Delete Account
+                </button>
+           
             </div>
         )
     }
