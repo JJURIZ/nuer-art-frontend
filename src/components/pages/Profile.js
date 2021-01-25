@@ -30,6 +30,15 @@ function Profile(props) {
             console.log(error)
         })
         }
+
+    const deleteUser = () => {
+        try {
+        axios.delete(`${backendUrl}/users/${props.user.id}`)
+        } 
+        catch(error) {
+            console.log(error)
+        }
+    }
         useEffect(() => {
             getUser()
           }, []);
@@ -63,7 +72,7 @@ function Profile(props) {
                 </Link>
                 <button 
                 className="Delete-user"
-                onClick=""
+                onClick={deleteUser}
                 >
                 Delete Account
                 </button>
