@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+@import '../utilities/StyleTemplates.scss';
 
 .Header {
     height: 10vh;
@@ -8,12 +9,14 @@
     margin-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    // grid-template-rows: 100px;
+    grid-template-rows: 10vh;
 
     &-title {
         grid-column-start: 3;
         grid-column-end: 6;
         color: white;
+        display: flex;
+        align-items: center;
     }
      
     &-auth {
@@ -22,30 +25,25 @@
     }
 
     &-profile {
-        color: white;
-        // margin: 0 1rem 0 1rem; 
         grid-column-start: 1;
         grid-column-end: 2; 
-        grid-row-start: 1;
+        @include header-item-style;
     }
 
     &-logout {
-        color: white;
-        // margin: 0 1rem 0 1rem;
         grid-column-start: 2;
         grid-column-end: 3;
-        grid-row-start: 1;
+        @include header-item-style;
     }
 
     &-shopping-empty {
         grid-column-start: 7;
-        grid-row-start: 1;
-        color: white;
+        @include header-item-style;
     }
     
     &-shopping-filled {
         grid-column-start: 7;
-        grid-row-start: 1;
+        @include header-item-style;
     }
 }
 
@@ -54,18 +52,3 @@
 .ShoppingFilled:hover {
     color: blue;
 }
-
-// .Profile {
-//     color: white;
-//     margin: 0 1rem 0 1rem; 
-//     grid-column-start: 1;
-//     grid-column-end: 2;  
-// }
-
-// .Logout {
-//     color: white;
-//     margin: 0 1rem 0 1rem;
-//     grid-column-start: 2;
-//     grid-column-end: 3;
-// }
-

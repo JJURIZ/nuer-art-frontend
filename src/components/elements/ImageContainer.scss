@@ -9,17 +9,20 @@
         &-info {
             display: flex;
             justify-content: space-evenly;
+            font-size: 1rem;
         }
     }
 }
 
 .ArtImage {
-    border: 10px solid black;
+    border: 5px solid black;
+    border-radius: 5px;
 }
 
 .ant-image {
-    // margin-left: 10px;
+    margin-left: 20px;
     margin-bottom: 5px;
+    justify-content: center;
 }
 
 .add-to-cart:hover {

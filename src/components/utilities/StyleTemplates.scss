@@ -25,3 +25,10 @@
     }
 }
 
+@mixin header-item-style {
+    grid-row-start: 1;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+

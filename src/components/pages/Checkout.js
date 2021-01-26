@@ -27,9 +27,18 @@ class Checkout extends Component {
 
     render(props){
         const cartItems = this.props.cart.items
-        const Artwork = cartItems.map((cartItem) => {
+        console.log(cartItems)
+        const checkoutItems = cartItems.filter(cartItem => {
+            if(cartItem.qty >= 1){
+                return true;
+            }
+        })
+        console.log(checkoutItems)
+            
+
+        const Artwork = checkoutItems.map((cartItem, idx) => {
             return (
-                <div className="ant-image">
+                <div key={idx} className="ant-image">
                     <Image
                     className="ArtImage"
                     width={300}
@@ -45,6 +54,7 @@ class Checkout extends Component {
           </div>
                 </div>
             )
+        // }
         })
         return(
             <div>

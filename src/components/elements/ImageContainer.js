@@ -19,6 +19,14 @@ class ImageContainer extends Component {
     }
     handleClick(price, title, qty, url) {
       const updatedItems = [...this.state.paintings]
+      // const updatedItems = this.state.paintings.filter((paintItem) => {
+      //   if(paintItem.qty >= 1){
+      //     return true;
+      //   }
+      // })
+      // console.log(updatedItems)
+
+      
       if(this.state.paintings.some(item => item.title === title)){
         const idx = updatedItems.findIndex(item => item.title === title)
         updatedItems[idx].qty += 1
