@@ -1,0 +1,39 @@
+@import '../utilities/StyleTemplates.scss';
+
+.Login {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 60px);
+    justify-items: center;
+    justify-content: center;
+
+    &-header {
+        // grid-row-start: 1;
+        font-size: 3rem;
+        margin-top: 2rem;
+        @include titles;
+    }
+
+    &-form {
+        border: 1px solid red;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        @include from-container;
+    }
+}
+
+.Form-button {
+    color: black;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
+.form-control {
+    @include form-inputs;
+}
+
+.Signup-link {
+    @include titles;
+    // grid-row-start: 6;
+}

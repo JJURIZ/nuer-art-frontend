@@ -3,10 +3,10 @@ import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from '../utilities/setAuthToken'
 import { Link } from 'react-router-dom'
-
 import { withAlert } from 'react-alert'
-
 import { Redirect } from 'react-router-dom'
+
+import './Home.scss'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
 class Home extends Component {
@@ -53,24 +53,24 @@ class Home extends Component {
     render(){
         if (this.props.user) return <Redirect to="/gallery" />
         return (
-            <div className="">
+            <div className="Login">
+                <h2 className="Login-header">I Have An Account</h2>
+                <form onSubmit={this.handleSubmit} className="Login-form">
             
-            <h2 className="">Login</h2>
-            <form onSubmit={this.handleSubmit}>
-                <div className="">
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" value={this.email} onChange={this.handleEmail} className="" />
+                    <input type="email" name="email" value={this.email} onChange={this.handleEmail} className="form-control" />
+
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" value={this.password} onChange={this.handlePassword} className="form-control" />
+        
+                    <button type="submit" className="Form-button">Login</button>
+                </form>
+                {/* <h2>Or</h2> */}
+                <div className="Signup-link">
+                    <Link to="/signup"><span>I Want An Account</span></Link>
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" value={this.password} onChange={this.handlePassword} className="" />
-                </div>
-                <button type="submit" className="">Login</button>
-            </form>
-            
-            <Link to="/signup"><h2>Sign Up</h2></Link>
-        </div>
+            </div>
         )
     }
 }

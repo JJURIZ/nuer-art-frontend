@@ -1,0 +1,27 @@
+@mixin titles {
+    font-size: 3rem;
+    align-self: center;
+    text-shadow: 3px 2px 6px darkgrey;
+}
+
+@mixin from-container {
+    font-size: 1.5rem;
+    margin: .5rem 0 .5rem 0;
+    width: 300px;
+    padding: 0 20px 0 20px;
+    border: black;
+    border-radius: 10px;
+    color: #808080;
+}
+
+@mixin form-inputs {
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 2px 2px #ccc; 
+    -moz-box-shadow:    2px 2px 2px 2px #ccc;  
+    box-shadow:         2px 2px 2px 2px #ccc;
+    color: black;
+    &-hover{
+        background: linear-gradient(90deg, rgba(182,182,236,1) 44%, rgba(0,212,255,0.4556197478991597) 90%);
+    }
+}
+

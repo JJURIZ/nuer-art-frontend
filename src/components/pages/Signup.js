@@ -90,9 +90,9 @@ const Signup = () => {
 
     return (
          
-                <div className="Signup-form">
-                    <h2 className="Signup-form-header">Signup</h2>
-                    <form onSubmit={handleSubmit} className="Signup-form-input">
+                <div className="Signup">
+                    <h2 className="Signup-header">Signup</h2>
+                    <form onSubmit={handleSubmit} className="Signup-input">
                   
                             <label htmlFor="name">Name</label>
                             <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
@@ -123,7 +123,7 @@ const Signup = () => {
                             <label htmlFor="zip">Zip</label>
                             <input type="text" name="zip" value={zip} onChange={handleZip} className="form-control" />
                     
-                        <button type="submit" className="Signup-button">Submit</button>
+                            <button type="submit" className="Form-button">Submit</button>
                     </form>
                 </div>
     )

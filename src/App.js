@@ -28,7 +28,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   const [cart, setCart] = useState({items: []})
   const [currentUser, setCurrentUser] = useState('')
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   const nowCurrentUser = (userData) => {
     setCurrentUser(userData)

@@ -2,17 +2,17 @@
 
 .Header {
     height: 10vh;
-    border: 1px solid red;
     justify-items: center;
     background-color: black;
     font-size: 3rem;
     margin-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: 1fr;
+    // grid-template-rows: 100px;
 
     &-title {
-        grid-column-start: 4;
+        grid-column-start: 3;
+        grid-column-end: 6;
         color: white;
     }
      
@@ -20,37 +20,52 @@
         display: flex;
         grid-column: 5 / span 2;
     }
+
+    &-profile {
+        color: white;
+        // margin: 0 1rem 0 1rem; 
+        grid-column-start: 1;
+        grid-column-end: 2; 
+        grid-row-start: 1;
+    }
+
+    &-logout {
+        color: white;
+        // margin: 0 1rem 0 1rem;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+    }
+
+    &-shopping-empty {
+        grid-column-start: 7;
+        grid-row-start: 1;
+        color: white;
+    }
+    
+    &-shopping-filled {
+        grid-column-start: 7;
+        grid-row-start: 1;
+    }
 }
 
-.ShoppingEmpty {
-    color: white;
-    align-self: center;
-}
 
-.ShoppingFilled {
-    align-self: center;
-}
 
 .ShoppingFilled:hover {
     color: blue;
 }
 
-.Profile {
-    color: white;
-    margin: 0 1rem 0 1rem;   
-}
+// .Profile {
+//     color: white;
+//     margin: 0 1rem 0 1rem; 
+//     grid-column-start: 1;
+//     grid-column-end: 2;  
+// }
 
-.Logout {
-    color: white;
-    margin: 0 1rem 0 1rem;
-}
+// .Logout {
+//     color: white;
+//     margin: 0 1rem 0 1rem;
+//     grid-column-start: 2;
+//     grid-column-end: 3;
+// }
 
-.Signup {
-    color: white;
-    margin: 0 1rem 0 1rem;
-}
-
-.Login {
-    color: white;
-    margin: 0 1rem 0 1rem;
-}
