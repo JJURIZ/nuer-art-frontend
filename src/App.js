@@ -5,8 +5,6 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './components/utilities/setAuthToken';
 import axios from 'axios'
 
-// IMPORT INTERNAL UTILITIES
-
 // IMPORT INTERNAL COMPONENTS
 import Header from './components/elements/Header'
 import Footer from './components/elements/Footer'
@@ -16,7 +14,7 @@ import Signup from './components/pages/Signup'
 import Home from './components/pages/Home'
 import Profile from './components/pages/Profile'
 import EditProfile from './components/pages/EditProfile'
-// IMPORT SCSS
+
 import './App.scss'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 

@@ -1,6 +1,10 @@
+// IMPORT EXTERNAL DEPENDENCIES
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+
+// IMPORT INTERNAL DEPENDENCIES
+import './EditProfile.scss'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
 const EditProfile = (props) => {
@@ -57,7 +61,6 @@ const EditProfile = (props) => {
         axios.get(`${backendUrl}/users/${props.user.id}`)
         .then((response) => {
             let user = response.data.user
-            console.log(user)
             setName(user.name)
             setEmail(user.email)
             setAddressLine1(user.addressLine1)
@@ -71,10 +74,9 @@ const EditProfile = (props) => {
     if (redirect) return <Redirect to='/profile' />
    
     return (
-
-                <div className="Signup-form">
+                <div className="Signup">
                     <h2 className="Signup-header">Edit Profile</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="Signup-input">
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
                             <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
@@ -103,7 +105,7 @@ const EditProfile = (props) => {
                             <label htmlFor="zip">Zip</label>
                             <input type="text" name="zip" value={zip} onChange={handleZip} className="form-control" />
                         </div>
-                        <button type="submit" className="Signup-button">Submit</button>
+                        <button type="submit" className="Form-button">Submit</button>
                     </form>
                 </div>
     )

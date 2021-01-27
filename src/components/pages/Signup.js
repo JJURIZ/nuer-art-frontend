@@ -1,7 +1,10 @@
+// IMPORT EXTERNAL DEPENDENCIES
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useAlert } from 'react-alert'
 import { Redirect } from 'react-router-dom'
+
+// IMPORT INTERNAL COMPONENTS
 import './Signup.scss'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 

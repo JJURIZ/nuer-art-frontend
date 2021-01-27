@@ -1,16 +1,11 @@
-// EXTERNAL IMORTS
+// IMPORT EXTERNAL DEPENDENCIES
 import React, { Component } from 'react'
 import { Image } from 'antd'
-// import axios from 'axios'
-
 // import {v4 as uuidv4} from 'uuidv4'
 
-//INTERNAL IMPORTS
+// IMPORT INTERNAL COMPONENTS
 import './ImageContainer.scss'
-// const backendUrl = process.env.REACT_APP_SERVER_URL
-
 class ImageContainer extends Component {
-
     handleClick(price, title, qty, url) {
       const updatedItems = [...this.props.cart.items]
       if(this.props.cart.items.some(item => item.title === title)){

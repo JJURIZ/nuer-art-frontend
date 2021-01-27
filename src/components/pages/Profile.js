@@ -1,6 +1,9 @@
+// IMPORT EXTERNAL DEPENDENCIES
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
+// IMPORT INTERNAL COMPONENTS
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
 function Profile(props) {
@@ -44,7 +47,6 @@ function Profile(props) {
             getUser()
           }, []);
 
-    console.log(props.user)
         return(
             <div>
                 <h1>Profile</h1>
