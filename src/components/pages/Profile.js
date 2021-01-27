@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 // IMPORT INTERNAL COMPONENTS
+import './Profile.scss'
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
 function Profile(props) {
@@ -48,15 +49,15 @@ function Profile(props) {
           }, []);
 
         return(
-            <div>
-                <h1>Profile</h1>
-                <p>{name}</p>
-                <p>{email}</p>
-                <p>{addressLine1}</p>
-                <p>{addressLine2}</p>
-                <p>{city}</p>
-                <p>{state}</p>
-                <p>{zip}</p>
+            <div className="Profile">
+                <h1 className="Signup-header">Profile</h1>
+                <p className="Profile-info">{name}</p>
+                <p className="Profile-info">{email}</p>
+                <p className="Profile-info">{addressLine1}</p>
+                <p className="Profile-info">{addressLine2}</p>
+                <p className="Profile-info">{city}</p>
+                <p className="Profile-info">{state}</p>
+                <p className="Profile-info">{zip}</p>
                 <Link to={{pathname: "/profile/edit", state: {user: {
                     name,
                     email,
@@ -68,14 +69,14 @@ function Profile(props) {
                     id: props.user.id
                 }}}}>
                 <button 
-                className=""
+                className="Form-button"
                 >
                 Edit Profile
                 </button>
                 </Link>
                 <Link to="/">
                 <button 
-                className="Delete-user"
+                className="Form-button"
                 onClick={deleteUser}
                 >
                 Delete Account

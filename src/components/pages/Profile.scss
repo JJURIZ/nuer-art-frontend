@@ -1,0 +1,14 @@
+@import '../utilities/StyleTemplates.scss';
+
+.Profile {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    justify-content: center;
+
+    &-info {
+        font-size: 1.5rem;
+    }
+}
+
