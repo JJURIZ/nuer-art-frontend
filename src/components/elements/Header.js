@@ -6,8 +6,7 @@ import './Header.scss'
 
 class Header extends Component { 
     
-    render(props) {
-        console.log(this.props.cart.items.length)
+    render(props) {     
         if(this.props.isAuthenticated){
             return(
                 <div className="Header">

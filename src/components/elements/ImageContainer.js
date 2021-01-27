@@ -1,33 +1,19 @@
 // EXTERNAL IMORTS
 import React, { Component } from 'react'
 import { Image } from 'antd'
-import axios from 'axios'
+// import axios from 'axios'
 
 // import {v4 as uuidv4} from 'uuidv4'
 
 //INTERNAL IMPORTS
 import './ImageContainer.scss'
-const backendUrl = process.env.REACT_APP_SERVER_URL
+// const backendUrl = process.env.REACT_APP_SERVER_URL
 
 class ImageContainer extends Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        paintings: []
-      }
-      this.getImages = this.getImages.bind(this)
-    }
-    handleClick(price, title, qty, url) {
-      const updatedItems = [...this.state.paintings]
-      // const updatedItems = this.state.paintings.filter((paintItem) => {
-      //   if(paintItem.qty >= 1){
-      //     return true;
-      //   }
-      // })
-      // console.log(updatedItems)
 
-      
-      if(this.state.paintings.some(item => item.title === title)){
+    handleClick(price, title, qty, url) {
+      const updatedItems = [...this.props.cart.items]
+      if(this.props.cart.items.some(item => item.title === title)){
         const idx = updatedItems.findIndex(item => item.title === title)
         updatedItems[idx].qty += 1
       } else {
@@ -36,26 +22,11 @@ class ImageContainer extends Component {
       this.props.setCart({items: updatedItems})
     }
 
-    getImages(){
-      let allPaintings
-      axios.get(`${backendUrl}/paintings/all`)
-      .then(response => {
-          allPaintings = response.data.paintings
-          this.setState({paintings: allPaintings})
-      })
-      .catch(error => {
-          console.log(error)
-      })
-    }
-    
-    componentDidMount(){
-      this.getImages()
-    }
     render(props){
-      if(!this.state.paintings){
+      if(!this.props.paintings.allPaintings){
         return <div>Loading...</div>
       }
-      const Artwork = this.state.paintings.map((print) => {
+      const Artwork = this.props.paintings.allPaintings.map((print) => {
         return  (
           <div className="ant-image">
           <Image

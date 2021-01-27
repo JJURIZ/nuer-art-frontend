@@ -6,16 +6,16 @@ import './Checkout.scss'
 // import Prints from '../data/Prints'
 class Checkout extends Component {
 
-    handleClick(price, title, qty, url) {
-        const updatedItems = [...this.props.cart.items]
-        if(this.props.cart.items.some(item => item.title === title)){
-            const idx = updatedItems.findIndex(item => item.title === title)
-            updatedItems[idx].qty += 1
-        } else {
-            this.props.push({price, title, qty, url})
-        }
-        this.props.setCart({items: updatedItems})
-    }
+    // handleClick(price, title, qty, url) {
+    //     const updatedItems = [...this.props.cart.items]
+    //     if(this.props.cart.items.some(item => item.title === title)){
+    //         const idx = updatedItems.findIndex(item => item.title === title)
+    //         updatedItems[idx].qty += 1
+    //     } else {
+    //         this.props.push({price, title, qty, url})
+    //     }
+    //     this.props.setCart({items: updatedItems})
+    // }
 
     getTotal() {
         let data = this.props.cart.items

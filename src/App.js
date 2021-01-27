@@ -3,6 +3,8 @@ import { Route, Redirect } from "react-router-dom"
 import { useState, useEffect } from "react"
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './components/utilities/setAuthToken';
+import axios from 'axios'
+
 // IMPORT INTERNAL UTILITIES
 
 // IMPORT INTERNAL COMPONENTS
@@ -16,6 +18,8 @@ import Profile from './components/pages/Profile'
 import EditProfile from './components/pages/EditProfile'
 // IMPORT SCSS
 import './App.scss'
+const backendUrl = process.env.REACT_APP_SERVER_URL
+
 
 // ENVIRONMENT VARIABLES
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -26,9 +30,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 }
 
 function App() {
+
   const [cart, setCart] = useState({items: []})
   const [currentUser, setCurrentUser] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [paintings, setPaintings] = useState([]);
 
   const nowCurrentUser = (userData) => {
     setCurrentUser(userData)
@@ -42,8 +48,20 @@ function App() {
       setIsAuthenticated(false)
     }
   }
+  const getImages = () => {
+    let allPaintings
+    axios.get(`${backendUrl}/paintings/all`)
+    .then(response => {
+        allPaintings = response.data.paintings
+        setPaintings({allPaintings})
+    })
+    .catch(error => {
+        console.log(error)
+    })
+  }
 
   useEffect(() => {
+    getImages()
     let token;
     // if there is no token in localStorage, then the user is in authenticated
     if (!localStorage.getItem('jwtToken')) {
@@ -69,6 +87,7 @@ function App() {
       component={ Checkout } 
       setCart={setCart}
       cart={cart}
+      paintings={paintings}
       />
 
       <PrivateRoute 
@@ -77,6 +96,7 @@ function App() {
       cart={cart}
       component={ ImageContainer } 
       user={currentUser}
+      paintings={paintings}
       />
 
       <Route 
