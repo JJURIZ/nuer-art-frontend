@@ -104,6 +104,7 @@ const EditProfile = (props) => {
                         <div className="form-group">
                             <label htmlFor="zip">Zip</label>
                             <input type="text" name="zip" value={zip} onChange={handleZip} className="form-control" />
+                            <button type="submit" className="Form-button">Submit</button>
                         </div>
                         <button type="submit" className="Form-button">Submit</button>
                     </form>
