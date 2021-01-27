@@ -4,15 +4,15 @@ This is the frontend repository for the NuerArt site. It was designed to work wi
 
 **Contents**
 
-1. [About](https://github.com/jtreeves/budget-frontend#about)
-2. [Installation](https://github.com/jtreeves/budget-frontend#installation)
-3. [Explanation](https://github.com/jtreeves/budget-frontend#explanation)
-4. [User Stories](https://github.com/jtreeves/budget-frontend#user-stories)
-5. [Dependencies](https://github.com/jtreeves/budget-frontend#dependencies)
-6. [Designs](https://github.com/jtreeves/budget-frontend#designs)
-7. [Views](https://github.com/jtreeves/budget-frontend#views)
-8. [Code Examples](https://github.com/jtreeves/budget-frontend#code-examples)
-9. [Stretch Goals](https://github.com/jtreeves/budget-frontend#stretch-goals)
+1. [About](https://github.com/JJURIZ/nuer-art-frontend#about)
+2. [Installation](https://github.com/JJURIZ/nuer-art-frontend#installation)
+3. [Explanation](https://github.com/JJURIZ/nuer-art-frontend#explanation)
+4. [User Stories](https://github.com/JJURIZ/nuer-art-frontend#user-stories)
+5. [Dependencies](https://github.com/JJURIZ/nuer-art-frontend#dependencies)
+6. [Designs](https://github.com/JJURIZ/nuer-art-frontend#designs)
+7. [Views](https://github.com/JJURIZ/nuer-art-frontend#views)
+8. [Code Examples](https://github.com/JJURIZ/nuer-art-frontend#code-examples)
+9. [Stretch Goals](https://github.com/JJURIZ/nuer-art-frontend#stretch-goals)
 
 ## About
 
