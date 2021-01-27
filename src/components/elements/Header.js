@@ -20,7 +20,7 @@ class Header extends Component {
         } else {
             return(
                 <div className="Header">
-                    <Link to="/" className="Header-title"><p>Nuer Art</p></Link>
+                    <Link to="/" className="Header-title"><span>Nuer Art</span></Link>
                 </div>
             )
         }
