@@ -168,3 +168,4 @@ A MERN application was required for the final Software Engineering Immersive pro
 - Ability to checkout as a guest.
 - Enhance overall site style. 
 - Ability to add multiple of the same item to the cart from the gallery. 
+- Auto login after account creation.
