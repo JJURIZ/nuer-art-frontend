@@ -94,9 +94,9 @@ const Signup = () => {
     return (
          
                 <div className="Signup">
-                    <h2 className="Signup-header">Signup</h2>
                     <form onSubmit={handleSubmit} className="Signup-input">
-                  
+                    <h2 className="Signup-header">Signup</h2>
+                        <div className="Signup-column-1">
                             <label htmlFor="name">Name</label>
                             <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
                      
@@ -108,7 +108,8 @@ const Signup = () => {
                 
                             <label htmlFor="confirmPassword">Confirm Password</label>
                             <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPassword} className="form-control" />
-                    
+                        </div>
+                        <div className="Signup-column-2">
                             <label htmlFor="addressLine1">Address Line 1</label>
                             <input type="text" name="addressLine1" value={addressLine1} onChange={handleAddressLine1} className="form-control" />
                     
@@ -122,11 +123,12 @@ const Signup = () => {
                             <label htmlFor="state">State</label>
                             <input type="text" name="state" value={state} onChange={handleState} className="form-control" />
                        
-                        
                             <label htmlFor="zip">Zip</label>
                             <input type="text" name="zip" value={zip} onChange={handleZip} className="form-control" />
-                    
+                        </div>
+                        <div className="Signup-row-submit">    
                             <button type="submit" className="Form-button">Submit</button>
+                        </div>
                     </form>
                 </div>
     )

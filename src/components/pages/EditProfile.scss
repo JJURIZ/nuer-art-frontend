@@ -1,19 +1,19 @@
 @import '../utilities/StyleTemplates.scss';
 
-.Signup {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 60px);
-    justify-items: center;
-    justify-content: center;
+// .Signup {
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-rows: repeat(6, 60px);
+//     justify-items: center;
+//     justify-content: center;
 
-    &-header {
-        font-size: 3rem;
-        margin-top: 2rem;
-        @include titles;
-    }
-    &-input{
-        grid-row: 2 / 6;
-        @include from-container;
-    }
-}
+//     &-header {
+//         font-size: 3rem;
+//         margin-top: 2rem;
+//         @include titles;
+//     }
+//     &-input{
+//         grid-row: 2 / 6;
+//         @include from-container;
+//     }
+// }

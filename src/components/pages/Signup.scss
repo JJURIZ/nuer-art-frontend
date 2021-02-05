@@ -1,20 +1,79 @@
 @import '../utilities/StyleTemplates.scss';
 
 .Signup {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 60px);
-    justify-items: center;
+    display: flex;
     justify-content: center;
 
     &-header {
         font-size: 3rem;
         margin-top: 2rem;
+        grid-column: 1 / -1;
+        grid-row: 1;
         @include titles;
     }
     &-input{
         grid-row: 2 / 6;
         @include from-container;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(7, 80px);
+        justify-items: center;
+        justify-content: center;
+        width: 300px;
+    }
+
+    &-column-1 {
+        grid-column: 1;
+        grid-row: 2 / 6;
+        margin-right: 10px;
+    }
+    &-column-2 {
+        grid-column: 2;
+        grid-row: 2 / 6;
+        margin-left: 10px;
+    }
+
+    &-row-submit {
+        grid-column: 1 / -1;
+        grid-row: 7;
     }
 }
+
+// .Signup {
+//     // display: grid;
+//     // grid-template-columns: repeat(2, 1fr);
+//     // grid-template-rows: repeat(6, 60px);
+//     display: flex;
+//     justify-items: center;
+//     justify-content: center;
+
+//     &-header {
+//         font-size: 3rem;
+//         margin-top: 2rem;
+//         @include titles;
+//     }
+//     &-input{
+//         grid-row: 2 / 6;
+//         @include from-container;
+//         display: grid;
+//         justify-items: center;
+//         justify-content: center;
+//         height: 50vh;
+//         width: 300px;
+//     }
+
+//     &-column-1 {
+//         grid-column: 1;
+//         grid-row: 1;
+//         margin-right: 10px;
+//     }
+//     &-column-2 {
+//         grid-column: 2 / 2;
+//         grid-row: 1;
+//         margin-left: 10px;
+//     }
+
+// }
+
+
 
