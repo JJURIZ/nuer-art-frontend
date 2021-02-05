@@ -10,5 +10,10 @@
     &-info {
         font-size: 1.5rem;
     }
+
+}
+
+.Form-button {
+    @include button;
 }
 

@@ -5,6 +5,7 @@ import axios from 'axios'
 
 // IMPORT INTERNAL COMPONENTS
 import './Profile.scss'
+
 const backendUrl = process.env.REACT_APP_SERVER_URL
 
 function Profile(props) {
@@ -51,13 +52,13 @@ function Profile(props) {
         return(
             <div className="Profile">
                 <h1 className="Signup-header">Profile</h1>
-                <p className="Profile-info">{name}</p>
-                <p className="Profile-info">{email}</p>
-                <p className="Profile-info">{addressLine1}</p>
-                <p className="Profile-info">{addressLine2}</p>
-                <p className="Profile-info">{city}</p>
-                <p className="Profile-info">{state}</p>
-                <p className="Profile-info">{zip}</p>
+                <p className="Profile-info">Name: {name}</p>
+                <p className="Profile-info">Email: {email}</p>
+                <p className="Profile-info">Address Line 1: {addressLine1}</p>
+                <p className="Profile-info">Address Line 2{addressLine2}</p>
+                <p className="Profile-info">City: {city}</p>
+                <p className="Profile-info">State: {state}</p>
+                <p className="Profile-info">Zip: {zip}</p>
                 <Link to={{pathname: "/profile/edit", state: {user: {
                     name,
                     email,

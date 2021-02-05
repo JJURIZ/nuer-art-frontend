@@ -25,6 +25,12 @@
     }
 }
 
+@mixin button {
+    color: black;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
+
 @mixin header-item-style {
     grid-row-start: 1;
     color: white;
@@ -32,3 +38,8 @@
     align-items: center;
 }
 
+@mixin button {
+    color: black;
+    margin-top: 2rem;
+    border-radius: 10px;
+}
