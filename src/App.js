@@ -44,8 +44,10 @@ function App() {
       localStorage.removeItem('jwtToken');
       setCurrentUser(null);
       setIsAuthenticated(false)
+      setCart({items: []})
     }
   }
+  
   const getImages = () => {
     let allPaintings
     axios.get(`${backendUrl}/paintings/all`)

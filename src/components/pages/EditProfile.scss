@@ -1,19 +1,34 @@
 @import '../utilities/StyleTemplates.scss';
 
-// .Signup {
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     grid-template-rows: repeat(6, 60px);
-//     justify-items: center;
-//     justify-content: center;
+.Edit-profile {
+    display: flex;
+    justify-content: center;
 
-//     &-header {
-//         font-size: 3rem;
-//         margin-top: 2rem;
-//         @include titles;
-//     }
-//     &-input{
-//         grid-row: 2 / 6;
-//         @include from-container;
-//     }
-// }
+    &-header {
+        font-size: 3rem;
+        margin-top: 2rem;
+        grid-column: 1 / -1;
+        grid-row: 1;
+        @include titles;
+    }
+    &-form{
+        @include from-container;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 80px);
+        justify-items: center;
+        justify-content: center;
+        width: 300px;
+    }
+
+    &-column {
+        grid-column: 1;
+        grid-row: 2 / 6;
+        margin-right: 10px;
+    }
+
+    &-row-submit {
+        grid-column: 1 / -1;
+        grid-row: 7;
+    }
+}

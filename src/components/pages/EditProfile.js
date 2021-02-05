@@ -74,39 +74,33 @@ const EditProfile = (props) => {
     if (redirect) return <Redirect to='/profile' />
    
     return (
-                <div className="Signup">
-                    <h2 className="Signup-header">Edit Profile</h2>
-                    <form onSubmit={handleSubmit} className="Signup-input">
-                        <div className="form-group">
+                <div className="Edit-profile">
+                    <form onSubmit={handleSubmit} className="Edit-profile-form">
+                    <h2 className="Edit-profile-header">Edit Profile</h2>
+                    <div className="Edit-profile-column">
                             <label htmlFor="name">Name</label>
                             <input type="text" name="name" value={name} onChange={handleName} className="form-control" />
-                        </div>
-                        <div className="form-group">
+                     
                             <label htmlFor="email">Email</label>
                             <input type="email" name="email" value={email} onChange={handleEmail} className="form-control" />
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="addressLine1">Address Line 1</label>
                             <input type="text" name="addressLine1" value={addressLine1} onChange={handleAddressLine1} className="form-control" />
-                        </div>
-                        <div className="form-group">
+                    
                             <label htmlFor="addressLine2">Address Line 2</label>
                             <input type="text" name="addressLine2" value={addressLine2} onChange={handleAddressLine2} className="form-control" />
-                        </div>
-                        <div className="form-group">
+                     
                             <label htmlFor="city">City</label>
                             <input type="text" name="city" value={city} onChange={handleCity} className="form-control" />
-                        </div>
-                        <div className="form-group">
+                       
                             <label htmlFor="state">State</label>
                             <input type="text" name="state" value={state} onChange={handleState} className="form-control" />
-                        </div>
-                        <div className="form-group">
+                       
                             <label htmlFor="zip">Zip</label>
                             <input type="text" name="zip" value={zip} onChange={handleZip} className="form-control" />
+                        </div>
+                        <div className="Signup-row-submit">    
                             <button type="submit" className="Form-button">Submit</button>
                         </div>
-                        <button type="submit" className="Form-button">Submit</button>
                     </form>
                 </div>
     )
