@@ -67,7 +67,7 @@ class Home extends Component {
                 </form>
                 {/* <h2>Or</h2> */}
                 <div className="Signup-link">
-                    <Link to="/signup"><span>I Want An Account</span></Link>
+                    <Link to="/signup"><span className="Signup-link-text">I Want An Account</span></Link>
                 </div>
 
             </div>
